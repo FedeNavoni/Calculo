@@ -1,0 +1,345 @@
+\documentclass[10pt]{article}
+\small
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\addto\captionsspanish{
+  \renewcommand{\contentsname}
+    {\textnormal{TABLA DE CONTENIDOS}}
+}
+\usepackage{amsmath, amssymb, amsthm} 
+\usepackage{tikz, tikz-3dplot} 
+\usepackage{etoolbox}
+\AtBeginEnvironment{tikzpicture}{\shorthandoff{>}\shorthandoff{<}}{}{}
+\usetikzlibrary{arrows.meta}
+\usepackage{graphicx} 
+
+\usepackage{lastpage}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{xcolor}
+\definecolor{gris}{HTML}{999999}
+\definecolor{amarillo}{HTML}{ffffcc}
+\definecolor{verde}{HTML}{e5ffe5}
+\definecolor{gris2}{HTML}{dfdfdf}
+\definecolor{negro}{HTML}{000000}
+\usepackage[a4paper]{geometry}
+\geometry{top=0.7cm, bottom=1cm, left=2.8cm, right=1.4cm}
+\geometry{includehead, includefoot} 
+\setlength{\headheight}{0.5cm}
+\setlength{\headsep}{0.7cm}
+\setlength{\footskip}{14.5pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\textcolor{gris}{\footnotesize{CÁLCULO III}}}
+\chead{\textcolor{gris}{\footnotesize{Año: 2019}}}
+\rhead{\textcolor{gris}{\footnotesize{Página \thepage de \pageref{LastPage}}}}
+\lfoot{\textcolor{gris}{\footnotesize{Archivo: \\ TP02\_Calculo3.pdf}}}
+\rfoot{
+\textcolor{gris}{
+\begin{tabular}{c c r}
+\footnotesize{Revisión:} & \footnotesize{Fecha:} & \footnotesize{Autor: } \\
+\footnotesize{0} & \footnotesize{13/05/19} & \footnotesize{Turchet - Hermoza}
+\end{tabular}
+}
+}
+\setlength{\parindent}{0pt}
+\usepackage{titlesec}
+\titleformat{\section}
+{\Large \bfseries}{}{0in}{}
+\titleformat{\subsection}
+{\large \bfseries}{}{0.2in}{}
+\titleformat{\subsubsection}
+{\normalsize \bfseries}{}{0in}{}
+\usepackage{titletoc}
+\titlecontents{section}[0.4in]
+{\bfseries \small}{}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[0.6in]
+{\bfseries \small}{}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[0.8in]
+{\small}{}{}{\titlerule*[0.5pc]{.}\contentspage}
+
+
+
+
+\begin{document}
+\fcolorbox{negro}{amarillo}{
+\normalsize
+\doublespacing
+\begin{minipage}{0.95\textwidth}
+\begin{tabular}{ l l }
+Asignatura...........: & CÁLCULO III \\
+Código.................: & FB17 \\
+Ano......................: & 2019 \\
+Docentes.............: & Eduardo Santillan Marcus / Jorgelina Walpen / Sofìa Leegstra
+\end{tabular}
+\end{minipage}
+}
+\bigskip
+
+
+\fcolorbox{negro}{verde}{
+\normalsize
+\doublespacing
+\begin{minipage}{0.95\textwidth}
+\begin{tabular}{ l l }
+Alumno.................: & Turchet Jeremias - Hermoza Deivis \\
+Legajo..................: & \\
+Cohorte................: & 2018 \\
+Cursado...............: & 2019
+\end{tabular}
+\end{minipage}
+}
+\bigskip
+
+
+\fcolorbox{negro}{gris2}{
+\normalsize
+\doublespacing
+\begin{minipage}{0.95\textwidth}
+\begin{tabular}{ l l }
+Asunto..................: & Trabajo Practico Nº2 \\
+Fecha de entrega.: & 13/05/2019 \\
+Adjuntos...............: & -----------
+\end{tabular}
+\end{minipage}
+}
+\bigskip
+
+\tableofcontents{}
+\pagebreak
+
+\section{Ascendiendo y Descendiendo}
+	La siguiente pintura  es del famoso artista neerlandés Maurtis C. Escher (1898 - 1972), denominada “Ascendiendo y descendiendo”
+	\begin{figure}[h]
+	\includegraphics[width=16cm]{Escher2}
+	\centering
+	\end{figure}
+	Si observamos en la figura únicamente a los monjes que recorren la escalera en sentido horario parece que solo “suben”, teniendo en cuenta la fuerza de la gravedad, se puede decir que el trabajo total que realiza el campo es negativo, ya que éste es contrario al que realizan los monjes. Análogamente se puede justificar el caso en que recorren la escalera en sentido antihorario donde solo “bajan”, siendo el campo el trabajo total realizado por el campo positivo, ya que éste “ayuda” al movimiento. 
+
+	Si consideramos un monje que empieza su recorrido en la torre que se encuentra en el extremo superior derecho de la pintura, sin importar el sentido que éste elija, al finalizar una  vuelta completa se encontrará en el mismo lugar de donde salió. Las características de la curva definida por la trayectoria del monje es que es suave por partes, ya que posee esquinas, es simple debido a que se recorre una única vez y es cerrada ya que su inicio es igual a su fin. 
+
+	Teniendo en cuenta las trayectoria antes descrita y sabiendo que el campo gravitacional es un campo conservativo, podemos afirmar que el trabajo total realizado por dicho en monje es nulo.
+	\pagebreak
+
+	En el siguiente gráfico se puede apreciar como la curva es suave por partes y se puede ver el sentido de recorrido también.
+	\begin{figure}[h]
+	\begin{center}
+	\begin{tikzpicture}[scale=2, transform shape]
+		\draw [-{Latex[width=3mm, length=5mm]}] (0, 0) -- (0, 3) node[above, left]{A};
+		\draw [-{Latex[width=3mm, length=5mm]}] (0, 3) -- (3, 3) node[above, right]{B};
+		\draw [-{Latex[width=3mm, length=5mm]}] (3, 3) -- (3, 0) node[below, right]{C};
+		\draw [-{Latex[width=3mm, length=5mm]}] (3, 0) -- (0, 0) node[below, left]{D};
+	\end{tikzpicture}
+	\end{center}
+	\end{figure}
+	\[ \text{La curva } C = C_{AB} + C_{BC} + C_{CD} + C_{DA} \]
+	Entonces
+	\[ \oint \limits_C \vec{F} \times d\vec{r} = \int \limits_{C_{AB}} \vec{F} \times d\vec{r} + \int \limits_{C_{BC}} \vec{F} \times d\vec{r} + \int \limits_{C_{CD}} \vec{F} \times d\vec{r} + \int \limits_{C_{DA}} \vec{F} \times d\vec{r} \]
+	Luego podemos decir que:
+	\[ C_{AB} = -C_{CD} \text{ y } C_{BC} = -C_{DA} \]
+	Entonces si reemplazamos en la formula anterior
+	\[ \oint \limits_C \vec{F} \times d\vec{r} = \int \limits_{C_{AB}} \vec{F} \times d\vec{r} + \int \limits_{C_{BC}} \vec{F} \times d\vec{r} - \int \limits_{-C_{CD}} \vec{F} \times d\vec{r} - \int \limits_{-C_{DA}} \vec{F} \times d\vec{r} \]
+	\[ \oint \limits_C \vec{F} \times d\vec{r} = \int \limits_{C_{AB}} \vec{F} \times d\vec{r} + \int \limits_{C_{BC}} \vec{F} \times d\vec{r} - \int \limits_{C_{AB}} \vec{F} \times d\vec{r} - \int \limits_{C_{BC}} \vec{F} \times d\vec{r} = 0\]
+	Claramente, la situación retratada es la pintura no es una situación real. lo que hace asombroso al dibujo de Escher es que la idea de altura no tiene sentido: muchos pasos hacia “arriba” sin hacer pasos hacia “abajo” te pueden llevar al mismo punto.
+
+	Así se vería el mundo si el campo gravitacional fuera no conservativo.
+
+
+\section{Campos Vectoriales}
+\subsection{Características}%
+	\parindent=0.2in
+	\hangindent=0.2in
+	Suponga que una región en el plano o en el espacio está ocupada por un fluido en movimiento, como aire o agua. El fluido está formado por un número muy grande de partículas y, en cualquier instante, una partícula tiene una velocidad v. En diferentes puntos de la región en un instante dado, estas velocidades varían. Pensamos que el vector velocidad está pegado a cada uno de los puntos del fluido y que representa la velocidad de una partícula en ese punto. Un fluido tal es un ejemplo de un campo vectorial. 
+	\pagebreak
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	En general, un campo vectorial es una función que asigna un vector a cada punto en su dominio. Un campo de vectores tridimensionales en el espacio tendrá una fórmula como:
+	\[ \vec{F}(x,y,z) = P(x,y,z)\vec{i} + Q(x,y,z)\vec{j} + R(x,y,z)\vec{k}  \]
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Con la simple observación de un campo vectorial es posible reconocer ciertas características como pueden ser continuidad y suavidad, o saber si es comprensible o incomprensible, como así también distinguir entre un campo rotacional de un irrotacional. 
+	\begin{itemize}
+		\item Continuidad de un campo Vectorial: Un campo vectorial es continuo si y sólo si todas sus funciones componentes son continuas. Gráficamente podemos decir que un campo vectorial es continuo si no hay huecos en las líneas de flujo que dibujan los vectores.
+		\item Suavidad de un campo Vectorial: Es suave si sus derivadas parciales primeras existen y son continuas. Gráficamente podemos decir que un campo vectorial es suave si nos situamos en un punto y los vectores asociados a ese punto no cambian bruscamente de dirección.
+		\item Compresibilidad de un campo Vectorial: Un fluido se clasifica en compresible e incompresible , dependiendo del nivel de la variación de la densidad de fluido durante un flujo. Se dice que es incompresible si la densidad de flujo permanece constante a lo largo de todo el flujo. En esencia, las densidades de los fluidos son constantes y así el flujo de ellos es típicamente incompresible. Caso contrario el flujo es compresible si los cambios en la densidad de un punto a otro cambia.
+		\item Campos rotacionales e irrotacionales:  Esto nos da una idea de la forma en que circula un fluido con respecto a los ejes, localizados en diferentes puntos, perpendiculares a la región. En ocasiones, los físicos se refieren a esto como la densidad de circulación de un campo vectorial $\vec{F}$ en un punto.
+	\end{itemize}
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	En el video indicado se pueden distinguir 3 campos vectoriales diferentes.
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Con la simple observación podemos afirmar que es incomprensible ya que  se puede identificar un efecto remolino en el punto (7,0) (cordenadas x, y respectivamente)
+
+\section{Divergencia}
+	La divergencia (densidad de flujo) de un campo vectorial \( \vec{F} = M\vec{i} + N\vec{j} \) en el punto (x,y) es:
+	\[ div\vec{F} = \frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} \]
+
+	Podemos pensar en un gas, este es compresible, y la divergencia de su campo de velocidad mide cuánto se expande o se comprime en cada punto. Entonces podemos plantear las siguientes definiciones.
+	\\
+
+\subsection{Divergencia positiva}
+	\parindent=0.2in
+	\hangindent=0.2in
+	Sucede cuando nos situamos en un punto y todas las partículas alrededor de la región que contiene ese punto tienden a salir de dicha región. La tasa a la que salen las partículas es más grande que la tasa a la que entran. En este caso diremos que estamos perdiendo densidad de flujo
+	
+\subsubsection{Ejemplos:}%
+	\parindent=0.4in
+	\hangindent=0.4in
+%Agregar los ejemplos
+
+
+\subsection{Divergencia negativa}%
+	\parindent=0.2in
+	\hangindent=0.2in
+	Sucede cuando nos situamos en un punto y todas las partículas convergen hacia el punto. La tasa a la que entran las partículas es más grande en comparación a la tasa en la que salen. En este caso la densidad de flujo en el punto aumentan.
+
+\subsubsection{Ejemplos:}%
+	\parindent=0.4in
+	\hangindent=0.4in
+%Agregar los ejemplos
+
+\subsection{Divergencia nula}%
+	\parindent=0.2in
+	\hangindent=0.2in
+	El campo vectorial tiene una trayectoria simple, si nos posicionamos en un punto observamos que la tasa a la que entran las partículas es la misma a la que salen.
+
+\subsubsection{Ejemplos:}%
+	\parindent=0.4in
+	\hangindent=0.4in
+%Agregar los ejemplos
+
+\section{El componente k del rotacional}
+	Por lo observado en el video podemos decir que tiene que ver con la forma de medir, en un punto, el giro de flujo asociado a un campo vectorial, con el eje perpendicular al plano. Esto nos da una idea de la forma en que circula un fluido con respecto a los ejes, localizados en diferentes puntos, perpendiculares a la región. En ocasiones, los físicos se refieren a esto como la densidad de circulación de un campo vectorial $\vec{F}$ en un punto.
+
+	Por lo tanto la densidad de circulación de un campo vectorial o componente $\vec{k}$ del rotacional en el flujo de un fluido incompresible sobre una región plana, mide la tasa de giro del fluido en un punto. El componente $\vec{k}$ del rotacional es positivo en los puntos donde la rotación va en sentido contrario al de las manecillas del reloj y negativo donde la rotación es en el sentido de las manecillas.
+
+	La densidad de circulación de un campo vectorial  F=M i+N jen el punto (x,y)es la expresión escalar: 
+	\[ \frac{\partial N}{\partial x} - \frac{\partial N}{\partial x} \]
+
+	Supongamos el giro de una rueda con paletas con el eje perpendicular al plano, en un fluido que se mueve en una región plana entonces:
+
+	\begin{figure}[h]
+		\includegraphics[width=16cm]{fig7}
+	\centering
+	\end{figure}
+
+\subsection{Rotacional en tres dimensiones}%
+	\parindent=0.2in
+	\hangindent=0.2in
+	Si pensamos en un objeto está rotando en dos dimensiones, se puede describir completamente la rotación con un número: la velocidad angular. Una velocidad angular positiva indica que la rotación es en sentido contrario de las manecillas del reloj mientras un número negativo indica una rotación en el sentido de las manecillas del reloj.
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Para un objeto rotando en tres dimensiones, la situación es más complicada. Necesitamos representar tanto la velocidad angular como la dirección en el espacio de tres dimensiones en el que el objeto está rotando.
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Para hacer esto, la rotación en tres dimensiones normalmente se describe usando un vector. La magnitud del vector indica la rapidez angular y la dirección es determinada por una convención muy importante llamada la "regla de la mano derecha".
+
+	\begin{figure}[h]
+	\includegraphics[width=5cm]{fig8}
+	\centering
+	\end{figure}
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Suponga que $\vec{F}$ es el campo de velocidades de un fluido que fluye en el espacio. Las partículas próximas al punto (x,y,z) en el fluido tienden a girar alrededor de un eje que pasa por (x,y,z) y que es paralelo a cierto vector. El vector se conoce como vector rotacional $y$ para el campo vectorial \( \vec{F} = M\vec{i} + N\vec{j} + P\vec{k} \) se define como:
+	\[ rot\vec{F} = \big ( \frac{\partial P}{\partial y} - \frac{\partial N}{\partial z}  \big ) \vec{i} + \big ( \frac{\partial M}{\partial y} - \frac{\partial P}{\partial x}  \big )\vec{j} + \big ( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}  \big )\vec{k} \] 
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	Esta información es una consecuencia del teorema de Stokes, que es la generalización para el espacio de la forma de circulación rotacional del teorema de Green. Con frecuencia, la fórmula para el rot F en la ecuación se escribe utilizando el operador simbólico “nabla”:
+	\[ \vec{\nabla} = \vec{i} \frac{\partial}{\partial x} + \vec{j} \frac{\partial}{\partial y}  + \vec{k} \frac{\partial}{\partial z}   \]
+
+	\parindent=0.2in
+	\hangindent=0.2in
+	El rot$\vec{F}$ es \( \vec{\nabla} \wedge \vec{F} \)
+	\[ \vec{\nabla} \wedge \vec{F} =
+		\begin{vmatrix}
+			\vec{i} & \vec{j} & \vec{k} \\
+			\frac{\partial}{\partial x} & \frac{\partial}{\partial x} & \frac{\partial}{\partial x} \\
+			M & N & P
+		\end{vmatrix}
+	= \big ( \frac{\partial P}{\partial y} - \frac{\partial N}{\partial z}  \big ) \vec{i} + \big ( \frac{\partial M}{\partial y} - \frac{\partial P}{\partial x}  \big )\vec{j} + \big ( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}  \big )\vec{k} \] 
+
+\section{Evaluacion de los conceptos descritos hasta ahora}
+	\begin{enumerate}
+		\item Observando la gráfica del campo vectorial y si nos posicionamos en el origen de coordenadas vemos que la densidad de flujo se mantiene constante, si nos situamos en la recta y=0 vemos que el flujo diverge en el origen, pero si nos situamos en la recta x=0 se observa que el flujo converge hacia el origen. Por lo tanto podemos decir que la divergencia es cero.
+		\item En este caso $\vec{F}$ es irrotacional, ya que si otra vez nos paramos en el origen observamos que no hay rotación de las partículas. Al igual que si nos posicionamos en los demás puntos del plano coordenado.
+		\item Proponemos la siguiente ley para el campo vectorial
+			\[ \vec{F}(x,y) = (x,-y,0) \]
+			\[ div\vec{F} = \vec{\nabla} \times \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = 1 - 1 + 0 = 0 \]
+
+			Lo cual verifica lo antes mencionado en el item 1)
+			\[ rot\vec{F} = \vec{\nabla} \wedge \vec{F} = (R_y - Q_y)\vec{i} + (R_x - P_z)\vec{j} + (Q_x - P_y)\vec{k} = (0 - 0)\vec{i} + (0 - 0)\vec{j} + (0 - 0)\vec{k} = \vec{0} \]
+			Verifica el item 2)
+	\end{enumerate}
+
+%Figura
+
+\begin{enumerate}
+	\item  Si nos posicionamos en cualquier punto sobre las rectas, como por ejemplo x=1, x=2, x=4, se observa que la densidad de flujo se mantiene constante. Entonces decimos que la Div$\vec{F}$ es cero.
+	\item $\vec{F}$ es irrotacional ya que las partículas en el lado izquierdo a la recta x=3 tienden solo a desplazarse en el sentido del eje y negativo y por el lado derecho de la recta en el sentido del eje y positivo lo cual no genera una rotación en torno a alguna partícula.
+	\item Proponemos la siguiente ley para el campo vectorial
+		\[ \vec{F}(x,y) = (0,-1+ \frac{x}{3} ,0) \]
+		\[ div\vec{F} = \vec{\nabla} \times \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = 0 + 0 + 0 = 0 \]
+		Lo cual verifica lo antes mencionado en el item 1)
+		\[ rot\vec{F} = \vec{\nabla} \wedge \vec{F} = (R_y - Q_y)\vec{i} + (R_x - P_z)\vec{j} + (Q_x - P_y)\vec{k} = (0 - 0)\vec{i} + (0 - 0)\vec{j} + ( \frac{1}{3}  - 0)\vec{k} = \frac{1}{3} \vec{k} \]
+\end{enumerate}	
+%Figura
+
+\begin{enumerate}
+	\item Podemos decir que si fueran partículas de gas según la gráfica no tienden a expandirse ni a comprimirse hay una rotación uniforme, por lo tanto la div$\vec{F}$ es cero.
+	\item Por lo que se observa en la gráfica la densidad de circulación constante indica rotación en todos los puntos.Pensemos que si pusiéramos de una rueda de palas con centro en el origen de coordenadas, en el gráfico vemos que, la “corriente” tiende a hacer rotar a la rueda en el sentido a las agujas del reloj,y el rotacional tendria dirección negativa al eje z. Por lo que podemos decir que $\vec{F}$  es rotacional y el rot$\vec{F}$<0
+	\item Proponemos la siguiente ley para el campo vectorial
+		\[ \vec{F}(x,y) = (y,-x,0) \]
+		\[ div\vec{F} = \vec{\nabla} \times \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = 0 + 0 + 0 = 0 \]
+		Lo cual verifica lo antes mencionado en el item 1)
+		\[ rot\vec{F} = \vec{\nabla} \wedge \vec{F} = (R_y - Q_y)\vec{i} + (R_x - P_z)\vec{j} + (Q_x - P_y)\vec{k} = (0 - 0)\vec{i} + (0 - 0)\vec{j} + ( -1 - 1)\vec{k} = -2 \vec{k} \]
+		Lo que verifica el item 2)
+
+\end{enumerate}
+
+\begin{enumerate}
+	\item En este caso se observa que la div$\vec{F}$ es negativa, podríamos pensar que la cantidad de partículas que entran a una región que contiene algún punto (x,y) es mayor que la que sale.
+	\item Podemos decir que $\vec{F}$ es irrotacional ya que situamos rueda con paletas en el algún punto del plano xy la “corriente” sólo tendería a desplazar la rueda y no la haría rotar.
+	\item Proponemos la siguiente ley para el campo vectorial
+		\[ \vec{F}(x,y) = ( \frac{1}{x} ,0,0) \]
+		\[ div\vec{F} = \vec{\nabla} \times \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = - \frac{1}{x^2}  + 0 + 0 = 0 \]
+		Lo cual verifica lo antes mencionado en el item 1)
+		\[ rot\vec{F} = \vec{\nabla} \wedge \vec{F} = (R_y - Q_y)\vec{i} + (R_x - P_z)\vec{j} + (Q_x - P_y)\vec{k} = (0 - 0)\vec{i} + (0 - 0)\vec{j} + ( 0 - 0)\vec{k} = \vec{0} \]
+
+\end{enumerate}
+
+\section{Teorema de Stokes}
+	El teorema de Stokes relaciona la circulación de un campo vectorial alrededor de la frontera C de una superficie orientada S en el espacio con una integral de superficie sobre la superficie S. Es necesario que la superficie sea suave por partes, lo cual significa que se trata de una unión finita de superficies suaves unidas a lo largo de curvas suaves.
+
+	Sea S una superficie orientada suave por partes que tiene como frontera una curva suave por partes C Sea \( \vec{F} = M\vec{i} + N\vec{j} + P\vec{k} \)  un campo vectorial cuyos componentes tienen primeras derivadas parciales continuas sobre una región abierta que contiene a S. Así, la circulación de F alrededor de C en la dirección contraria a las manecillas del reloj con respecto al vector unitario $\vec{n}$ normal a la superficie es igual a la integral de \( \vec{\nabla} \wedge \vec{F} \cdot \vec{n} \) en S.
+	\[ \oint \limits_C \vec{F} \cdot d\vec{r} = \iint \limits_S \vec{\nabla} \wedge \vec{F} \cdot \vec{n} \quad d\sigma \]
+
+\subsection{Ley de Faraday}%
+	\parindent=0.2in
+	\hangindent=0.2in
+	Si \( \vec{E}(t,x,y,z) \text{ y } \vec{\vec{B}}(t,x,y,z) \) representan los campos eléctrico y magnético en el punto (x,y,z) en el instante t, un principio básico de la teoría electromagnética dice que
+	\[ \vec{\nabla} \wedge \vec{F} = - \frac{\partial \vec{B}}{\partial t} \]
+	En esta expresión,\(\vec{\nabla} \wedge \vec{F}\) se calcula con t fijo y \( \frac{\partial \vec{B}}{\partial t} \) se calcula con (x,y,z) fijo.
+	
+	\parindent=0.2in
+	\hangindent=0.2in
+	Utilicé el teorema de Stokes para deducir la ley de Faraday donde C representa un lazo de alambre por el que fluye corriente en el sentido contrario al de las manecillas del reloj con respecto al vector unitario normal n a la superficie, dando lugar al voltaje alrededor de C. La integral de superficie del lado derecho de la ecuación se llama flujo magnético, y S es cualquier superficie
+
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=16cm]{g12}
+	\end{figure}
+\end{document}
